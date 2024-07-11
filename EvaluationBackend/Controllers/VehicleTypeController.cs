@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EvaluationBackend.Controllers
 {
-    [Authorize]
+ 
     public class VehicleTypeController : BaseController
     {
         private readonly ItypeOfVechileService _typeVehicle;

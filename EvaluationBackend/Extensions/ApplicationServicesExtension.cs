@@ -9,6 +9,8 @@ using EvaluationBackend.DATA;
 using EvaluationBackend.Helpers;
 using EvaluationBackend.Repository;
 using EvaluationBackend.Services;
+using EvaluationBackend.Interface;
+using EvaluationBackend.Respository;
 
 namespace EvaluationBackend.Extensions
 {
@@ -22,6 +24,23 @@ namespace EvaluationBackend.Extensions
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<ItypeOfVehicleRepositry, typeOfVehicleRepositry>();
+            services.AddScoped<ItypeOfVechileService, typeOfVehicleService>();
+            services.AddScoped<ICitizenRepositry, CitizenRepositry>();
+            services.AddScoped<ICitizenService, CitizenService>();
+            services.AddScoped<IPlaceFineRepositry, PlaceFineRepositry>();
+            services.AddScoped<IPlaceFineService, PlaceFineService>();
+            services.AddScoped<IReportRepositry, ReportRepositry>();
+            services.AddScoped<IReportService, ReportService>();
+            services.AddScoped<IFineRepositry, FineRepositry>();
+            services.AddScoped<IFineService, FineService>();
+            services.AddScoped<IVehicalRepositry, VehicleRepositry>();
+            services.AddScoped<IVehicaleService, VehicalService>();
+            services.AddScoped<IGovRepositry, GovRepositry>();
+            services.AddScoped<IGovService, GovService>();
+            services.AddScoped<IFineTypeRepositry, FineTypeRepositry>();
+            services.AddScoped<IFineTypeService, FineTypeService>();
+         
             services.AddScoped<AuthorizeActionFilter>();
             services.AddScoped<PermissionSeeder>();
             

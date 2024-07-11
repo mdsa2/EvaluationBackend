@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EvaluationBackend.Controllers
 {
- [Authorize]
+
     public class FinesController : BaseController
     {
    

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EvaluationBackend.Controllers
 {
-    [Authorize]
+ 
     public class PlaceController : BaseController
     {
         private readonly IPlaceFineService _placeNameService;

@@ -11,7 +11,7 @@ namespace EvaluationBackend.Controllers
 {
 
      
-     [Authorize]
+ 
       
     public class TypeFineController : BaseController
     {
@@ -21,7 +21,7 @@ namespace EvaluationBackend.Controllers
             _fineService = fineService;
         }
         [HttpGet]
-        public async Task<ActionResult<Respons<FineTypeDto>>> GetAll([FromQuery] FineTypeFilter filter) => Ok(await _fineService.GetAll(filter));
+        public async Task<ActionResult<Respons<FineTypeDto>>> GetAll([FromQuery] FineTypeFilter filter) => Ok(await _fineService.GetAll(filter),filter.PageNumber);
         [HttpPost]
         public async Task<ActionResult<FineTypeForm>> Add(FineTypeForm fineForm) => Ok(await _fineService.add(fineForm));
         [HttpPut("{id}")]

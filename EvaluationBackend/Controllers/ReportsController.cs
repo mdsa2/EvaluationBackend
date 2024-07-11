@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EvaluationBackend.Controllers
 {
- [Authorize]
+ 
     public class ReportsController : BaseController
     {
         private readonly IReportService _reportService;
