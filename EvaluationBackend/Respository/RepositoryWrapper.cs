@@ -22,6 +22,7 @@ namespace EvaluationBackend.Repository
         private IFineTypeRepositry _typefine;
         private IPlaceFineRepositry _placefine;
         private ICitizenRepositry _citizen;
+        private IVehicleCityRepositry _City;
         private IRoleRepository _role;
         
         public IRoleRepository Role {  get {
@@ -44,12 +45,23 @@ namespace EvaluationBackend.Repository
         public IArticleRespository Article {  get {
             if(_articles == null)
             {
-                _articles = new ArticleRepository(_context,_mapper);
+                _articles = new ArticleRepositry(_context,_mapper);
             }
             return _articles;
         } }
+        public IVehicleCityRepositry VehicleCityRepositry
+        {
+            get
+            {
+                if (_City == null)
+                {
+                    _City = new VehicleCityRepositry(_context, _mapper);
+                }
+                return _City;
+            }
+        }
 
-        
+
         public IUserRepository User {  get {
             if(_user == null)
             {
@@ -168,6 +180,8 @@ namespace EvaluationBackend.Repository
             }
 
         }
+
+ 
 
         public RepositoryWrapper(DataContext context, IMapper mapper)
         {

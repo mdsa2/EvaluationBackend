@@ -16,6 +16,7 @@ namespace EvaluationBackend.Repository
         IPlaceFineRepositry placeFineRepositry { get; }
         IGovRepositry govRepositry { get; }
         IFineTypeRepositry fineTypeRepositry { get; }
+        IVehicleCityRepositry VehicleCityRepositry { get; }
         
         IRoleRepository Role { get; }
         

@@ -40,6 +40,8 @@ namespace EvaluationBackend.Extensions
             services.AddScoped<IGovService, GovService>();
             services.AddScoped<IFineTypeRepositry, FineTypeRepositry>();
             services.AddScoped<IFineTypeService, FineTypeService>();
+            services.AddScoped<IVehicleCityRepositry, VehicleCityRepositry>();
+            services.AddScoped<IVehicleCityService, VehicleCityService>();
          
             services.AddScoped<AuthorizeActionFilter>();
             services.AddScoped<PermissionSeeder>();

@@ -2,6 +2,6 @@
 {
     public class VehicleCityDto
     {
-        public string? CityOfVehicle { get; set; }
+        public string CityOfVehicle { get; set; }
     }
 }

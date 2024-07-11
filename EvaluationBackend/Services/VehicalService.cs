@@ -33,6 +33,8 @@ namespace EvaluationBackend.Services
         {
             var vehicle = _mapper.Map<Vehical>(vehicalForm);
 
+ 
+
             var result = await _repositoryWrapper.IVehicalRepositry.Add(vehicle);
 
 

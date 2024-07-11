@@ -1,6 +1,6 @@
 ﻿namespace EvaluationBackend.DATA.DTOs.VehicleCity
 {
-    public class VehicleForm
+    public class VehicleCityForm
     {
         public string? CityOfVehicle { get; set; }
     }

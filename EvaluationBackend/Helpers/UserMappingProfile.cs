@@ -10,6 +10,7 @@ using EvaluationBackend.DATA.DTOs.roles;
 using EvaluationBackend.DATA.DTOs.TypeOfVehicle;
 using EvaluationBackend.DATA.DTOs.User;
 using EvaluationBackend.DATA.DTOs.Vehical;
+using EvaluationBackend.DATA.DTOs.VehicleCity;
 using EvaluationBackend.Entities;
 using OneSignalApi.Model;
 
@@ -31,7 +32,7 @@ namespace EvaluationBackend.Helpers
             CreateMap<Citizen, CitizenDto>();
             CreateMap<CitizenForm, Citizen>();
             CreateMap<UpdateCitizen, Citizen>();
-            //Vehicle
+            //Fine
             CreateMap<Fine, FineDto>();
             CreateMap<FineForm, Fine>();
             CreateMap<FineUpdateDto, Fine>();
@@ -54,12 +55,39 @@ namespace EvaluationBackend.Helpers
 
             //Vehicle
             CreateMap<Vehical, VehicalDto>()
-.ForMember(dest => dest.VehiclesCities, opt => opt.MapFrom(src => src.VehicleCity.City))
+
+                 .ForMember(dest => dest.CitizenDto, opt => opt.MapFrom(src => src.Citizen))
+                 .ForMember(dest => dest.VehiclesCities, opt => opt.MapFrom(src => src.VehicleCity))
+
+
+            ;
+
+            
+
+            CreateMap<VehicalForm, Vehical>()
+            .ForMember(dest => dest.Citizen, opt => opt.MapFrom(src => src.CitizenForm))
+           
+            ;
+            CreateMap<VehicalUpdate, Vehical>();
+          
+            //Vehicle City
+            CreateMap<VehiclesCity, VehicleCityDto>()
+                 .ForMember(dest => dest.CityOfVehicle, opt => opt.MapFrom(src => src.City))
+            
 
                 ;
-            CreateMap<VehicalForm, Vehical>();
-            CreateMap<VehicalUpdate, Vehical>();
+            CreateMap<VehicleCityForm, VehiclesCity>()
+               
 
+                ;
+            CreateMap<VehicleCityUpdate, VehiclesCity>();
+            
+
+
+          
+         
+    
+         
 
 
             CreateMap<Permission, PermissionDto>();

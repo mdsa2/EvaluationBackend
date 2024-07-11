@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EvaluationBackend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240711090352_IntailCreatedadasadssda")]
-    partial class IntailCreatedadasadssda
+    [Migration("20240711115952_IntailCrea")]
+    partial class IntailCrea
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,7 +96,6 @@ namespace EvaluationBackend.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("Phonenumber")
@@ -328,7 +327,7 @@ namespace EvaluationBackend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CitizenId")
+                    b.Property<int>("CitizenId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("CreationDate")
@@ -337,13 +336,13 @@ namespace EvaluationBackend.Migrations
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("GovOfVehicle")
-                        .HasColumnType("text");
-
                     b.Property<int?>("NumberOfVechile")
                         .HasColumnType("integer");
 
                     b.Property<int>("TypeOfVechileId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("VehicleCityId")
                         .HasColumnType("integer");
 
                     b.Property<string>("carPartNumber")
@@ -355,7 +354,31 @@ namespace EvaluationBackend.Migrations
 
                     b.HasIndex("TypeOfVechileId");
 
+                    b.HasIndex("VehicleCityId");
+
                     b.ToTable("Vehical");
+                });
+
+            modelBuilder.Entity("EvaluationBackend.Entities.VehiclesCity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("City")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VehicleCities");
                 });
 
             modelBuilder.Entity("EvaluationBackend.Entities.AppUser", b =>
@@ -423,7 +446,9 @@ namespace EvaluationBackend.Migrations
                 {
                     b.HasOne("EvaluationBackend.Entities.Citizen", "Citizen")
                         .WithMany("Vehicles")
-                        .HasForeignKey("CitizenId");
+                        .HasForeignKey("CitizenId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EvaluationBackend.Entities.TypeOfVehicles", "typeOfVechile")
                         .WithMany()
@@ -431,7 +456,15 @@ namespace EvaluationBackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EvaluationBackend.Entities.VehiclesCity", "VehicleCity")
+                        .WithMany()
+                        .HasForeignKey("VehicleCityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Citizen");
+
+                    b.Navigation("VehicleCity");
 
                     b.Navigation("typeOfVechile");
                 });

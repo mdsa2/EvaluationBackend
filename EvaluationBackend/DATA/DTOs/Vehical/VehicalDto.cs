@@ -8,7 +8,7 @@ namespace EvaluationBackend.DATA.DTOs.Vehical
     public class VehicalDto
     {
         public TypeOfVehicleDto? typeOfVechile { get; set; }
-        public int NumberOfVechile { get; set; }
+        public int? NumberOfVechile { get; set; }
 
         public VehicleCityDto? VehiclesCities { get; set; }
         public string? carPartNumber { get; set; }
