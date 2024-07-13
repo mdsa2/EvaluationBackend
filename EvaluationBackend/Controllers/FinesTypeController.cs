@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Authorization;
 namespace EvaluationBackend.Controllers
 {
 
-     
- 
-      
+
+    [Authorize]
+
     public class TypeFineController : BaseController
     {
         private readonly IFineTypeService _fineService;

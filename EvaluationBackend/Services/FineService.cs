@@ -11,7 +11,7 @@ namespace EvaluationBackend.Services
     public interface IFineService
     {
 
-        Task<(Fine? fine, string? error)> add(FineForm fineForm);
+        Task<(Fine? fine, string? error)> add(Guid id, FineForm fineForm);
         Task<(List<FineDto> fines, int? totalCount, string? error)> GetAll(FineFilter fineFilter);
         Task<(Fine? fine, string? error)> update(FineForm fineForm, int id);
         Task<(Fine? fine, string?)> Delete(int id);
@@ -26,9 +26,17 @@ namespace EvaluationBackend.Services
             _mapper = mapper;
             _repositoryWrapper = repositoryWrapper;
         }
-        public async Task<(Fine? fine, string? error)> add(FineForm fineForm)
+        public async Task<(Fine? fine, string? error)> add(Guid id,FineForm fineForm)
         {
+            var user = await _repositoryWrapper.User.GetById(id);
+            if (user == null)
+            {
+             return   (null, "this user not found");
+            }
+
             var fine = _mapper.Map<Fine>(fineForm);
+
+            fine.AppUser = user;
 
             var result = await _repositoryWrapper.fineRepositry.Add(fine);
      
@@ -53,7 +61,8 @@ namespace EvaluationBackend.Services
         f => (f.Number == filter.number || filter.number == null) &&
              (f.Status == filter.Status || filter.Status == null) &&
              (f.Vehicle.typeOfVechile.Name == filter.Name || filter.Name == null) &&
-             (f.Vehicle.NumberOfVechile == filter.numbervehicle || filter.numbervehicle == null) ,
+             (f.Vehicle.NumberOfVechile == filter.numbervehicle || filter.numbervehicle == null) && 
+             (f.VechileId == filter.VehicleId || filter.VehicleId == null) ,
             
         
 

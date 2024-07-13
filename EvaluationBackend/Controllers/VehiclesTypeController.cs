@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EvaluationBackend.Controllers
 {
- 
-    public class VehicleTypeController : BaseController
+    [Authorize]
+    public class VehiclesTypeController : BaseController
     {
         private readonly ItypeOfVechileService _typeVehicle;
-        public VehicleTypeController(ItypeOfVechileService typeVehicle)
+        public VehiclesTypeController(ItypeOfVechileService typeVehicle)
         {
             _typeVehicle = typeVehicle;
         }

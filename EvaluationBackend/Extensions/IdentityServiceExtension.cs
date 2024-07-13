@@ -39,7 +39,7 @@ namespace EvaluationBackend.Extensions
                     }
                 });
             });
-
+          
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => 
             {

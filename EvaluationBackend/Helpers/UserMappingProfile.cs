@@ -6,6 +6,7 @@ using EvaluationBackend.DATA.DTOs.Fine;
 using EvaluationBackend.DATA.DTOs.FineType;
 using EvaluationBackend.DATA.DTOs.GovDto;
 using EvaluationBackend.DATA.DTOs.PlaceName;
+using EvaluationBackend.DATA.DTOs.Reports;
 using EvaluationBackend.DATA.DTOs.roles;
 using EvaluationBackend.DATA.DTOs.TypeOfVehicle;
 using EvaluationBackend.DATA.DTOs.User;
@@ -81,6 +82,13 @@ namespace EvaluationBackend.Helpers
 
                 ;
             CreateMap<VehicleCityUpdate, VehiclesCity>();
+
+
+
+            CreateMap<Fine, FineUserDto>()
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.AppUser.FullName))
+                ;
+       
             
 
 

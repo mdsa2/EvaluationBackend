@@ -4,17 +4,17 @@ using EvaluationBackend.DATA.DTOs.GovDto;
  
 using EvaluationBackend.Services;
 using EvaluationBackend.Utils;
- 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
  
 
 namespace EvaluationBackend.Controllers
 {
- 
-    public class GovernrateController : BaseController
+    [Authorize]
+    public class GovernratesController : BaseController
     {
         private readonly IGovService _govService;
-     public GovernrateController(IGovService govService)
+     public GovernratesController(IGovService govService)
         {
             _govService = govService;
         }

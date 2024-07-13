@@ -27,7 +27,7 @@ namespace EvaluationBackend.Services
         }
         public async Task<( List<FineUserDto> name, int? totalCount, string? error)> GetAll(FineFilter fineFilter)
         {
-
+            var (s, s1) = await _repositoryWrapper.reportRepositry.GetAll();
           
 
             var (name, totalCount) = await _repositoryWrapper.reportRepositry.GetAll<FineUserDto>(

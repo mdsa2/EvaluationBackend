@@ -7,6 +7,7 @@ namespace EvaluationBackend.DATA.DTOs.Citizen
 {
     public class CitizenDto
     {
+        public int Id {  get; set; }
         public string? Name { get; set; }
         public int?  phoneNumber { get; set; }
  

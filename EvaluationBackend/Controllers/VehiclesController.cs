@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EvaluationBackend.Controllers
 {
- 
-    public class VehicleController : BaseController
+    [Authorize]
+    public class VehiclesController : BaseController
     {
         private readonly IVehicaleService _vehicaleService;
-        public VehicleController(IVehicaleService vehicaleService)
+        public VehiclesController(IVehicaleService vehicaleService)
         {
 
             _vehicaleService = vehicaleService;

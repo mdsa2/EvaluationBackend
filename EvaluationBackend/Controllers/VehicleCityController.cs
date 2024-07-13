@@ -5,9 +5,11 @@ using EvaluationBackend.Utils;
 using Microsoft.AspNetCore.Mvc;
 using EvaluationBackend.DATA.DTOs.VehicleCity;
 using EvaluationBackend.DATA.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EvaluationBackend.Controllers
 {
+    [Authorize]
     public class VehicleCityController : BaseController
     {
 

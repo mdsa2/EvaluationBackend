@@ -4,13 +4,14 @@ using EvaluationBackend.Entities;
 using EvaluationBackend.DATA.DTOs.PlaceName;
 using AutoMapper;
 using EvaluationBackend.Repository;
+using EvaluationBackend.DATA.DTOs;
 
 namespace EvaluationBackend.Services
 {
     public interface IPlaceFineService
     {
         Task<(PlaceFine? placeFine, string? error)> add(PlaceNameForm placeNameForm);
-        Task<(List<PlaceNameDto> placeNameDtos, int? totalCount, string? error)> GetAll();
+        Task<(List<PlaceNameDto> placeNameDtos, int? totalCount, string? error)> GetAll(PlaceFilter placeFilter);
         Task<(PlaceFine? placefine, string? error)> update(PlaceNameUpdate placeNameUpdate, int id);
         Task<(PlaceFine? placeFine, string?)> Delete(int id);
     }
@@ -42,7 +43,7 @@ namespace EvaluationBackend.Services
             return result == null ? (null, "result could not be deleted") : (result, null);
         }
 
-        public async Task<(List<PlaceNameDto> placeNameDtos, int? totalCount, string? error)> GetAll( )
+        public async Task<(List<PlaceNameDto> placeNameDtos, int? totalCount, string? error)> GetAll( PlaceFilter placeFilter)
         {
             var (placeNameDtos, totalCount) = await _repositoryWrapper.placeFineRepositry.GetAll<PlaceNameDto>();
 

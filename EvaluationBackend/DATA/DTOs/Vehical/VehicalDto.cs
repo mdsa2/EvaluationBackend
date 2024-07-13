@@ -7,6 +7,7 @@ namespace EvaluationBackend.DATA.DTOs.Vehical
 {
     public class VehicalDto
     {
+        public int Id { get; set; }
         public TypeOfVehicleDto? typeOfVechile { get; set; }
         public int? NumberOfVechile { get; set; }
 

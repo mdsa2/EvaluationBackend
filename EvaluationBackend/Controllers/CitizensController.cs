@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using EvaluationBackend.Services;
 using EvaluationBackend.DATA.DTOs.Citizen;
 using EvaluationBackend.DATA.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EvaluationBackend.Controllers
 {
+    [Authorize]
     public class CitizensController : BaseController
     {
         private readonly ICitizenService _citizenService;

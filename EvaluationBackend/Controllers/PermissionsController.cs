@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using TextExtensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EvaluationBackend.Controllers
 {
+    [Authorize]
     public class PermissionsController : BaseController
     {
         

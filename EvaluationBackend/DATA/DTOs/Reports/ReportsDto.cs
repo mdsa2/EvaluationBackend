@@ -5,8 +5,9 @@ namespace EvaluationBackend.DATA.DTOs.Reports
 {
     public class ReportsDto
     {
+        public int Id { get; set; }
         public int number {  get; set; }
-        public TypeOfVehicles? TypeOfVehicles { get; set; }
+  
         public FineStatus? fineStatus { get; set; }
         public PlaceFine? placeFine { get; set; }
         public DateTime? CreationDate { get; set; }
