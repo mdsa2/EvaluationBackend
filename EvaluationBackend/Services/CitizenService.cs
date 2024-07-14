@@ -66,13 +66,12 @@ namespace EvaluationBackend.Services
             {
                 return (null, "citizen not found");
             }
-            var citizenz = new Citizen { Name = updateCitizen.Name,
-                Phonenumber = updateCitizen.phoneNumber,
+            citizen.Name = updateCitizen.Name;
+            citizen.Phonenumber = updateCitizen.phoneNumber;
             
-            
-            };
-            var response = await _repositoryWrapper.citizenRepositry.Update(citizenz);
-            return response == null ? (null, "citizen could not be updated") : (citizenz, null);
+          
+            var response = await _repositoryWrapper.citizenRepositry.Update(citizen);
+            return response == null ? (null, "citizen could not be updated") : (citizen, null);
         }
     }
 }

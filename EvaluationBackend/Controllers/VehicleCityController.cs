@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using EvaluationBackend.DATA.DTOs.VehicleCity;
 using EvaluationBackend.DATA.DTOs;
 using Microsoft.AspNetCore.Authorization;
+using EvaluationBackend.Helpers;
 
 namespace EvaluationBackend.Controllers
 {
     [Authorize]
+    [Route("Vehicle-City")]
     public class VehicleCityController : BaseController
     {
 

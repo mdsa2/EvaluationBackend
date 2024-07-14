@@ -1,5 +1,6 @@
 ﻿using EvaluationBackend.DATA;
 using EvaluationBackend.DATA.DTOs.Fine;
+using EvaluationBackend.Helpers;
 using EvaluationBackend.Services;
 using EvaluationBackend.Utils;
 using Microsoft.AspNetCore.Authorization;
@@ -7,7 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EvaluationBackend.Controllers
 {
+  
     [Authorize]
+ 
     public class FinesController : BaseController
     {
    

@@ -6,10 +6,12 @@ using EvaluationBackend.Services;
 using EvaluationBackend.DATA.DTOs.Citizen;
 using EvaluationBackend.DATA.DTOs;
 using Microsoft.AspNetCore.Authorization;
+using EvaluationBackend.Helpers;
 
 namespace EvaluationBackend.Controllers
 {
     [Authorize]
+    [ServiceFilter(typeof(AuthorizeActionFilter))]
     public class CitizensController : BaseController
     {
         private readonly ICitizenService _citizenService;
@@ -18,6 +20,7 @@ namespace EvaluationBackend.Controllers
         {
             _citizenService = citizenService;
         }
+
         [HttpGet]     
 
 

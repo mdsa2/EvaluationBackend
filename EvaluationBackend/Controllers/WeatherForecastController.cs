@@ -1,4 +1,4 @@
-using EvaluationBackend.Properties;
+
 using EvaluationBackend.DATA;
 using EvaluationBackend.Helpers;
 using Microsoft.AspNetCore.Mvc;

@@ -25,20 +25,23 @@ namespace EvaluationBackend.Helpers
             var controllerActionDescriptor = context.ActionDescriptor as ControllerActionDescriptor;
             if (controllerActionDescriptor != null)
             {
-                string controllerName = controllerActionDescriptor.ControllerName;
+              string controllerName = controllerActionDescriptor.ControllerName;
                 string actionName = GetCrudType(controllerActionDescriptor);
-
+                
                 string requiredPermission = $"{controllerName.ToKebabCase()}.{actionName.ToKebabCase()}";
+               
+              
 
-                bool hasPermission = await UserHasPermission(context.HttpContext.User, requiredPermission);
+ 
+               bool hasPermission = await UserHasPermission(context.HttpContext.User, requiredPermission);
 
-                if (!hasPermission)
+            if (!hasPermission)
                 {
                     context.Result = new ForbidResult();
                     return;
-                }
+                }   
             }
-
+ 
             await next();
         }
         

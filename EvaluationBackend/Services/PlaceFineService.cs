@@ -58,15 +58,13 @@ namespace EvaluationBackend.Services
             {
                 return (null, "place not found");
             }
-            var placefines = new PlaceFine
-            {
-                Name = placeNameUpdate.PlaceName,
+
+            placefine.Name = placeNameUpdate.PlaceName;
               
 
-
-            };
-            var response = await _repositoryWrapper.placeFineRepositry.Update(placefines);
-            return response == null ? (null, "citizen could not be updated") : (placefines, null);
+ 
+            var response = await _repositoryWrapper.placeFineRepositry.Update(placefine);
+            return response == null ? (null, "citizen could not be updated") : (placefine, null);
         }
     }
 }

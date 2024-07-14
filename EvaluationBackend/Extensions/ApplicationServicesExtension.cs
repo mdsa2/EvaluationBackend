@@ -36,6 +36,11 @@ namespace EvaluationBackend.Extensions
             services.AddScoped<IFineService, FineService>();
             services.AddScoped<IVehicalRepositry, VehicleRepositry>();
             services.AddScoped<IVehicaleService, VehicalService>();
+
+
+
+
+            
             services.AddScoped<IGovRepositry, GovRepositry>();
             services.AddScoped<IGovService, GovService>();
             services.AddScoped<IFineTypeRepositry, FineTypeRepositry>();

@@ -65,12 +65,11 @@ namespace EvaluationBackend.Services
             {
                 return (null, "gov not found");
             }
-            var typeOfvehicles = new TypeOfVehicles
-            {
-                Name = ypeOFVehicleUpdate.Name
-            };
-            var response = await _repositoryWrapper.itypeOfVehicleRepositry.Update(typeOfvehicles);
-            return response == null ? (null, "gov could not be updated") : (typeOfvehicles, null);
+
+            type.Name = ypeOFVehicleUpdate.Name;
+         
+            var response = await _repositoryWrapper.itypeOfVehicleRepositry.Update(type);
+            return response == null ? (null, "gov could not be updated") : (type, null);
         }
     }
 }

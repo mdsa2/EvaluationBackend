@@ -62,13 +62,12 @@ namespace EvaluationBackend.Services
             {
                 return (null, "fine not found");
             }
-            var finetypes = new FineTypes
-            {
-                Name = fineTypeUpdate.Name,
-                Price = fineTypeUpdate.Price,
-            };
-            var response = await _repositoryWrapper.fineTypeRepositry.Update(finetypes);
-            return response == null ? (null, "fine could not be updated") : (finetypes, null);
+
+            fineType.Name = fineTypeUpdate.Name;
+            fineType.Price = fineTypeUpdate.Price;
+             
+            var response = await _repositoryWrapper.fineTypeRepositry.Update(fineType);
+            return response == null ? (null, "fine could not be updated") : (fineType, null);
         }
     }
 }

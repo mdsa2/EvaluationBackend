@@ -79,6 +79,7 @@ namespace EvaluationBackend.Services
             {
                 return (null, "fine not found");
             }
+            
             fine = _mapper.Map(fineForm, fine);
             var response = await _repositoryWrapper.fineRepositry.Update(fine);
             return response == null ? (null, "fine could not be updated") : (fine, null);
