@@ -3,14 +3,16 @@ using EvaluationBackend.Entities;
 
 namespace EvaluationBackend.DATA
 {
-    public class FineFilter:BaseFilter
+    public class FineFilter : BaseFilter
     {
-        public int? number { get; set; }
+
         public int? numbervehicle { get; set; }
-        public string? Name { get; set; }
+        public string? Vehicletype { get; set; }
+        public string? character { get; set; }
+        public string? VehicleGovernarete {get;set;}
         public int? VehicleId  { get; set; }
 
- 
-        public FineStatus? Status { get; set; }
+      
+    
     }
 }

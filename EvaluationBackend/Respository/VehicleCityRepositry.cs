@@ -6,7 +6,7 @@ using EvaluationBackend.Repository;
 
 namespace EvaluationBackend.Respository
 {
-    public class VehicleCityRepositry:GenericRepository<VehiclesCity,int>, IVehicleCityRepositry
+    public class VehicleCityRepositry:GenericRepository<VehiclesGovernarete,int>, IVehicleCityRepositry
     {
         private readonly IMapper _mapper;
         private readonly DataContext _context;

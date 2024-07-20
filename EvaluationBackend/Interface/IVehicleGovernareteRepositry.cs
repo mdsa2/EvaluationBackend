@@ -2,7 +2,8 @@
 
 namespace EvaluationBackend.Interface
 {
-    public interface IFineNameRepositry:IGenericRepository<NameFine,int>
+    public interface IVehicleCityRepositry : IGenericRepository<VehiclesGovernarete, int>
     {
+
     }
 }

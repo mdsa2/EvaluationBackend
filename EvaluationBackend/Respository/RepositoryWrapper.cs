@@ -3,6 +3,7 @@ using AutoMapper;
 using EvaluationBackend.DATA;
 using EvaluationBackend.Interface;
 using EvaluationBackend.Respository;
+using EvaluationBackend.Services;
 
 namespace EvaluationBackend.Repository
 {
@@ -21,6 +22,8 @@ namespace EvaluationBackend.Repository
         private IGovRepositry _gov;
         private IFineTypeRepositry _typefine;
         private IPlaceFineRepositry _placefine;
+        private IReportPlates _reportplates;
+        private ICharacterRepositry _character;
         private ICitizenRepositry _citizen;
         private IVehicleCityRepositry _City;
         private IRoleRepository _role;
@@ -41,7 +44,28 @@ namespace EvaluationBackend.Repository
             return _permission;
         } }
 
-
+        public IReportPlates reportPlates
+        {
+            get
+            {
+                if (_reportplates == null)
+                {
+                    _reportplates = new ReportsPlatesRepositry(_context, _mapper);
+                }
+                return _reportplates;
+            }
+        }
+        public ICharacterRepositry characterRepositry
+        {
+            get
+            {
+                if (_character == null)
+                {
+                    _character = new characterRepositry(_context, _mapper);
+                }
+                return _character;
+            }
+        }
         public IArticleRespository Article {  get {
             if(_articles == null)
             {

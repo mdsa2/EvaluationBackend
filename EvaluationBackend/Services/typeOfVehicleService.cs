@@ -29,7 +29,7 @@ namespace EvaluationBackend.Services
         {
             var typeOfVehicle = new TypeOfVehicles
             {
-                Name = typeOFVehicleForm.Name
+                Name = typeOFVehicleForm.vehicleType
             };
            
 
@@ -66,7 +66,7 @@ namespace EvaluationBackend.Services
                 return (null, "gov not found");
             }
 
-            type.Name = ypeOFVehicleUpdate.Name;
+            type.Name = ypeOFVehicleUpdate.vehicleType;
          
             var response = await _repositoryWrapper.itypeOfVehicleRepositry.Update(type);
             return response == null ? (null, "gov could not be updated") : (type, null);

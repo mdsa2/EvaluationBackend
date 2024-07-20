@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace EvaluationBackend.Controllers
 {
     [Authorize]
+
     public class VehiclesController : BaseController
     {
         private readonly IVehicaleService _vehicaleService;

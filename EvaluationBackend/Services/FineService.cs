@@ -1,5 +1,4 @@
-﻿using EvaluationBackend.DATA.DTOs.ArticleDto;
-using EvaluationBackend.DATA.DTOs;
+﻿
 using EvaluationBackend.Entities;
 using EvaluationBackend.DATA.DTOs.Fine;
 using EvaluationBackend.Repository;
@@ -58,13 +57,15 @@ namespace EvaluationBackend.Services
             var (fines,  totalCount) = await _repositoryWrapper.fineRepositry.GetAll<FineDto>
                 (
                
-        f => (f.Number == filter.number || filter.number == null) &&
-             (f.Status == filter.Status || filter.Status == null) &&
-             (f.Vehicle.typeOfVechile.Name == filter.Name || filter.Name == null) &&
-             (f.Vehicle.NumberOfVechile == filter.numbervehicle || filter.numbervehicle == null) && 
-             (f.VechileId == filter.VehicleId || filter.VehicleId == null) ,
-            
+        f => (f.Vehicle.vehiclesGovernarete.VehicleGovernarte == filter.VehicleGovernarete || filter.VehicleGovernarete == null) &&
+             (f.Vehicle.typeOfVechile.Name == filter.Vehicletype || filter.Vehicletype == null) &&
         
+             (f.Vehicle.NumberOfVechile == filter.numbervehicle || filter.numbervehicle == null) && 
+             (f.VechileId == filter.VehicleId || filter.VehicleId == null) &&
+               (f.Vehicle.character.CharacterName == filter.character || filter.VehicleId == null),
+
+
+
 
         filter.PageNumber, filter.PageSize
     );

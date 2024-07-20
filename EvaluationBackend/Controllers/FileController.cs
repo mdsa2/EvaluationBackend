@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EvaluationBackend.Controllers;
-[Authorize]
+
 public class FileController:BaseController
 {
 

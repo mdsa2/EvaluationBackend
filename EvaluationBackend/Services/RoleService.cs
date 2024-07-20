@@ -40,6 +40,7 @@ namespace EvaluationBackend.Services
         public async Task<(List<RoleDto>? roles, int? totalCount, string? error)> GetAll()
         {
            var (data, totalCount) = await _repositoryWrapper.Role.GetAll<RoleDto>(0);
+            
               return (_mapper.Map<List<RoleDto>>(data), totalCount, null);
         }
         public async Task<(RoleDto? role, string? error)> Add(RoleForm roleForm)

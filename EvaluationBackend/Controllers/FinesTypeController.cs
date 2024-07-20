@@ -4,7 +4,6 @@ using EvaluationBackend.Services;
 using EvaluationBackend.Utils;
 using Microsoft.AspNetCore.Mvc;
 using EvaluationBackend.DATA.DTOs.FineType;
-using System.ComponentModel;
 using Microsoft.AspNetCore.Authorization;
 
 namespace EvaluationBackend.Controllers
@@ -12,11 +11,11 @@ namespace EvaluationBackend.Controllers
 
 
     [Authorize]
-
-    public class TypeFineController : BaseController
+    [Route("Fines-Types")]
+    public class FinesTypesController : BaseController
     {
         private readonly IFineTypeService _fineService;
-        public TypeFineController(IFineTypeService fineService)
+        public FinesTypesController(IFineTypeService fineService)
         {
             _fineService = fineService;
         }

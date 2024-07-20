@@ -2,6 +2,6 @@
 {
     public class TypeOFVehicleForm
     {
-        public string? Name { get; set; }
+        public string? vehicleType { get; set; }
     }
 }

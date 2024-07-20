@@ -10,7 +10,7 @@ namespace EvaluationBackend.DATA.DTOs.Vehical
 
         public int VehicleCityId { get; set; }
         public string? carPartNumber { get; set; }
-
+        public string? character { get; set; }
         public CitizenForm? CitizenForm { get; set; }
     }
 }

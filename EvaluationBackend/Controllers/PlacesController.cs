@@ -1,6 +1,4 @@
-﻿using EvaluationBackend.DATA.DTOs.Fine;
-using EvaluationBackend.DATA.DTOs.GovDto;
-using EvaluationBackend.DATA;
+﻿
 using EvaluationBackend.Services;
 using EvaluationBackend.Utils;
 using Microsoft.AspNetCore.Mvc;

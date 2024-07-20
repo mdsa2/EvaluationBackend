@@ -1,6 +1,5 @@
 ﻿using EvaluationBackend.DATA;
 using EvaluationBackend.DATA.DTOs.Fine;
-using EvaluationBackend.DATA.DTOs.PlaceName;
 using EvaluationBackend.DATA.DTOs.Reports;
 using EvaluationBackend.Services;
 using EvaluationBackend.Utils;
@@ -19,7 +18,7 @@ namespace EvaluationBackend.Controllers
             _reportService = reportService;
         }
         [HttpGet]
-        public async Task<ActionResult<Respons<ReportsDto>>> GetAll([FromQuery] FineFilter filter)=>Ok( await _reportService.GetAll(filter),filter.PageNumber);
+        public async Task<ActionResult<Respons<FineUserDto>>> GetAll([FromQuery] FineFilter filter)=>Ok( await _reportService.GetAll(filter),filter.PageNumber);
         
     }
 }

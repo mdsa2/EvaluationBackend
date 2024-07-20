@@ -46,6 +46,8 @@ namespace EvaluationBackend.Services
         public async Task<(List<string>? files, string? error)> Upload(IFormFile[] files)
         {
             var fileList = new List<string>();
+           
+
             foreach (var file in files)
             { 
                 var fileToAdd = await Upload(file);

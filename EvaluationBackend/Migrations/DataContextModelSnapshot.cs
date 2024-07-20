@@ -46,6 +46,9 @@ namespace EvaluationBackend.Migrations
                     b.Property<int?>("RoleId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("UserImage")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
@@ -76,6 +79,28 @@ namespace EvaluationBackend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Articles");
+                });
+
+            modelBuilder.Entity("EvaluationBackend.Entities.Character", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CharacterName")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Character");
                 });
 
             modelBuilder.Entity("EvaluationBackend.Entities.Citizen", b =>
@@ -129,11 +154,17 @@ namespace EvaluationBackend.Migrations
                     b.Property<int?>("GovId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Location")
+                        .HasColumnType("text");
+
                     b.Property<int?>("Number")
                         .HasColumnType("integer");
 
                     b.Property<int?>("PlaceFineId")
                         .HasColumnType("integer");
+
+                    b.Property<decimal?>("Price")
+                        .HasColumnType("numeric");
 
                     b.Property<int?>("Status")
                         .HasColumnType("integer");
@@ -143,6 +174,9 @@ namespace EvaluationBackend.Migrations
 
                     b.Property<int?>("VehicleId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("garageName")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -345,18 +379,26 @@ namespace EvaluationBackend.Migrations
                     b.Property<string>("carPartNumber")
                         .HasColumnType("text");
 
+                    b.Property<int?>("characterId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("vehiclesGovernareteId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CitizenId");
 
                     b.HasIndex("TypeOfVechileId");
 
-                    b.HasIndex("VehicleCityId");
+                    b.HasIndex("characterId");
+
+                    b.HasIndex("vehiclesGovernareteId");
 
                     b.ToTable("Vehical");
                 });
 
-            modelBuilder.Entity("EvaluationBackend.Entities.VehiclesCity", b =>
+            modelBuilder.Entity("EvaluationBackend.Entities.VehiclesGovernarete", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -364,18 +406,18 @@ namespace EvaluationBackend.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("City")
-                        .HasColumnType("text");
-
                     b.Property<DateTime?>("CreationDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("VehicleGovernarte")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
-                    b.ToTable("VehicleCities");
+                    b.ToTable("VehiclesGovernaretes");
                 });
 
             modelBuilder.Entity("EvaluationBackend.Entities.AppUser", b =>
@@ -453,17 +495,21 @@ namespace EvaluationBackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EvaluationBackend.Entities.VehiclesCity", "VehicleCity")
+                    b.HasOne("EvaluationBackend.Entities.Character", "character")
                         .WithMany()
-                        .HasForeignKey("VehicleCityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("characterId");
+
+                    b.HasOne("EvaluationBackend.Entities.VehiclesGovernarete", "vehiclesGovernarete")
+                        .WithMany()
+                        .HasForeignKey("vehiclesGovernareteId");
 
                     b.Navigation("Citizen");
 
-                    b.Navigation("VehicleCity");
+                    b.Navigation("character");
 
                     b.Navigation("typeOfVechile");
+
+                    b.Navigation("vehiclesGovernarete");
                 });
 
             modelBuilder.Entity("EvaluationBackend.Entities.Citizen", b =>

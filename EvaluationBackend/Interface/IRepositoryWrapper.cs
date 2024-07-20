@@ -13,6 +13,8 @@ namespace EvaluationBackend.Repository
         IReportRepositry reportRepositry { get; }
         IVehicalRepositry IVehicalRepositry { get; }
         ItypeOfVehicleRepositry itypeOfVehicleRepositry { get; }
+        IReportPlates reportPlates { get; }
+        ICharacterRepositry characterRepositry { get; }
         IPlaceFineRepositry placeFineRepositry { get; }
         IGovRepositry govRepositry { get; }
         IFineTypeRepositry fineTypeRepositry { get; }

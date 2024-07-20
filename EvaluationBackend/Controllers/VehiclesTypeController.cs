@@ -11,11 +11,11 @@ using EvaluationBackend.Helpers;
 namespace EvaluationBackend.Controllers
 {
     [Authorize]
- 
-    public class VehiclesTypeController : BaseController
+    [Route("Vehicle-Type")]
+    public class VehiclesTypesController : BaseController
     {
         private readonly ItypeOfVechileService _typeVehicle;
-        public VehiclesTypeController(ItypeOfVechileService typeVehicle)
+        public VehiclesTypesController(ItypeOfVechileService typeVehicle)
         {
             _typeVehicle = typeVehicle;
         }

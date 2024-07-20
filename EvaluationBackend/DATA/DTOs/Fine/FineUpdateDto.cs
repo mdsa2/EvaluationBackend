@@ -10,7 +10,7 @@
 
   
         public string? Location { get; set; }
-
+        public string? character { get; set; }
         public int? VechileId { get; set; }
     }
 }

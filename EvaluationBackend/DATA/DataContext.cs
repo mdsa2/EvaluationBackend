@@ -21,7 +21,7 @@ namespace EvaluationBackend.DATA
         public DbSet<Citizen> citizens { get; set; }
         public DbSet<PlaceFine> placeFines { get; set; }
         public DbSet<Gov> govs { get; set; }
-        public DbSet<VehiclesCity> VehicleCities { get; set; }
+        public DbSet<VehiclesGovernarete> VehiclesGovernaretes { get; set; }
         
  
 

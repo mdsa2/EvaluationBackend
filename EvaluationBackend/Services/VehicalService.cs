@@ -54,8 +54,15 @@ namespace EvaluationBackend.Services
         public async Task<(List<VehicalDto> vehicalDtos, int? totalCount, string? error)> GetAll(vehicleFilter vehicleFilter)
         {
             var (vehicle, totalCount) = await _repositoryWrapper.IVehicalRepositry.GetAll<VehicalDto>(
-        
-                
+
+                        f => (f.NumberOfVechile == vehicleFilter.VehicleNumber || vehicleFilter.VehicleNumber == null) &&
+             (f.character.CharacterName == vehicleFilter.character || vehicleFilter.character == null) &&
+             (f.vehiclesGovernarete.VehicleGovernarte == vehicleFilter.VehicleGovernarete || vehicleFilter.VehicleGovernarete == null) &&
+             (f.typeOfVechile.Name == vehicleFilter.Vehicletypes || vehicleFilter.Vehicletypes == null) ,
+
+
+
+        vehicleFilter.PageNumber, vehicleFilter.PageSize
                 );
 
             return (vehicle, totalCount, null);

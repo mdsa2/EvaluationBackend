@@ -13,7 +13,7 @@ namespace EvaluationBackend.Services
     public interface IReportService
     {
  
-        Task<( List<FineUserDto> name, int? totalCount, string? error)> GetAll(FineFilter fineFilter);
+        Task<( List<FineUserDto> name, int? totalCount, string? error)> GetAll(FineFilter filter);
     
     }
     public class ReportService : IReportService
@@ -25,18 +25,25 @@ namespace EvaluationBackend.Services
             _repositoryWrapper = repositoryWrapper;
             _mapper = mapper;
         }
-        public async Task<( List<FineUserDto> name, int? totalCount, string? error)> GetAll(FineFilter fineFilter)
+        public async Task<( List<FineUserDto> name, int? totalCount, string? error)> GetAll(FineFilter filter)
         {
-            var (s, s1) = await _repositoryWrapper.reportRepositry.GetAll();
+         
           
 
             var (name, totalCount) = await _repositoryWrapper.reportRepositry.GetAll<FineUserDto>(
 
-       f => (f.Number == fineFilter.number || fineFilter.number == null) &&
-       (f.Status == fineFilter.Status || fineFilter.Status == null)  ,
-          
-            fineFilter.PageNumber, fineFilter.PageSize
-           
+     f => (f.Vehicle.vehiclesGovernarete.VehicleGovernarte == filter.VehicleGovernarete || filter.VehicleGovernarete == null) &&
+             (f.Vehicle.typeOfVechile.Name == filter.Vehicletype || filter.Vehicletype == null) &&
+
+             (f.Vehicle.NumberOfVechile == filter.numbervehicle || filter.numbervehicle == null) &&
+         
+               (f.Vehicle.character.CharacterName == filter.character || filter.VehicleId == null),
+
+
+
+
+        filter.PageNumber, filter.PageSize
+
             );
          
             

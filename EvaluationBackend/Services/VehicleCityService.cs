@@ -3,7 +3,8 @@ using EvaluationBackend.DATA;
 using EvaluationBackend.DATA.DTOs;
 using EvaluationBackend.DATA.DTOs.GovDto;
 using EvaluationBackend.DATA.DTOs.PlaceName;
-using EvaluationBackend.DATA.DTOs.VehicleCity;
+using EvaluationBackend.DATA.DTOs.VehicleGovernareteDtos;
+
 using EvaluationBackend.Entities;
 using EvaluationBackend.Repository;
 using OneSignalApi.Model;
@@ -12,10 +13,10 @@ namespace EvaluationBackend.Services
 {
     public interface IVehicleCityService
     {
-        Task<(VehiclesCity? vehicleCity, string? error)> add(VehicleCityForm vehicleCityForm);
-        Task<(List<VehicleCityDto> vehicleCityDto, int? totalCount, string  ? error)> GetAll(VehicleCityFilter vehicleCityFilter);
-        Task<(VehiclesCity? vehicleCity, string? error)> update(VehicleCityUpdate vehicleCityUpdate, int id);
-        Task<(VehiclesCity? vehicleCity, string?)> Delete(int id);
+        Task<(VehiclesGovernarete? vehicleCity, string? error)> add(VehicleGovernareteForm vehicleCityForm);
+        Task<(List<VehicleGovernareteDto> vehicleCityDto, int? totalCount, string  ? error)> GetAll(VehicleCityFilter vehicleCityFilter);
+        Task<(VehiclesGovernarete? vehicleCity, string? error)> update(VehicleGovernareteUpdate vehicleCityUpdate, int id);
+        Task<(VehiclesGovernarete? vehicleCity, string?)> Delete(int id);
     }
     public class VehicleCityService : IVehicleCityService
 
@@ -29,12 +30,12 @@ namespace EvaluationBackend.Services
 
         }
 
-        public async Task<(VehiclesCity? vehicleCity, string? error)> add(VehicleCityForm vehicleCityForm)
+        public async Task<(VehiclesGovernarete? vehicleCity, string? error)> add(VehicleGovernareteForm vehicleCityForm)
         {
-            var Vehiclecity = new VehiclesCity
+            var Vehiclecity = new VehiclesGovernarete
             {
 
-                City = vehicleCityForm.CityOfVehicle
+                VehicleGovernarte = vehicleCityForm.VehicleGovernarete
             };
 
             var result = await _repository.VehicleCityRepositry.Add(Vehiclecity);
@@ -43,7 +44,7 @@ namespace EvaluationBackend.Services
             return result == null ? (null, "gov could not add") : (Vehiclecity, null);
         }
 
-        public async Task<(VehiclesCity? vehicleCity, string?)> Delete(int id)
+        public async Task<(VehiclesGovernarete? vehicleCity, string?)> Delete(int id)
         {
             var fine = await _repository.VehicleCityRepositry.GetById(id);
             if (fine == null) return (null, "Gov not found");
@@ -51,22 +52,22 @@ namespace EvaluationBackend.Services
             return result == null ? (null, "result could not be deleted") : (result, null);
         }
 
-        public async Task<(List<VehicleCityDto> vehicleCityDto, int? totalCount, string? error)> GetAll(VehicleCityFilter vehicleCityFilter)
+        public async Task<(List<VehicleGovernareteDto> vehicleCityDto, int? totalCount, string? error)> GetAll(VehicleCityFilter vehicleCityFilter)
         {
-            var (vehicleCityDto, totalCount) = await _repository.VehicleCityRepositry.GetAll<VehicleCityDto>();
+            var (vehicleCityDto, totalCount) = await _repository.VehicleCityRepositry.GetAll<VehicleGovernareteDto>();
 
 
             return (vehicleCityDto, totalCount, null);
         }
 
-        public async Task<(VehiclesCity? vehicleCity, string? error)> update(VehicleCityUpdate vehicleCityUpdate, int id)
+        public async Task<(VehiclesGovernarete? vehicleCity, string? error)> update(VehicleGovernareteUpdate vehicleCityUpdate, int id)
         {
             var gov = await _repository.VehicleCityRepositry.GetById(id);
             if (gov == null)
             {
                 return (null, "gov not found");
             }
-            gov.City = vehicleCityUpdate.CityOfVehicle;
+            gov.VehicleGovernarte = vehicleCityUpdate.VehicleGovernarete;
             var response = await _repository.VehicleCityRepositry.Update(gov);
             return response == null ? (null, "gov could not be updated") : (gov, null);
         }
